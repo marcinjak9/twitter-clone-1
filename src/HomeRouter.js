@@ -9,7 +9,7 @@ import LandingPage from './components/public/LandingPage';
 import LoginForm from './components/public/LoginForm';
 import RegisterForm from './components/public/RegisterForm';
 
-export default function Router() {
+export default function HomeRouter() {
     return (
         <Router>
             <LandingPage/>
