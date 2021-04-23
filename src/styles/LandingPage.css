@@ -1,0 +1,25 @@
+.sfondolanding{
+    background-image: url('https://source.unsplash.com/1600x900/?nature');
+    height: 100%;
+    width: 100%;
+    padding: 0 !important;    
+    margin: 0 !important;
+}
+
+.landing-col {
+    height: 100vh;
+    width: 100vw;
+    padding: 0 !important;    
+    margin: 0 !important;
+}
+.landing-row{
+    height: 100vh;
+    width: 100vw;
+    padding: 0 !important;    
+    margin: 0 !important;
+}
+
+.landing-container{
+    padding: 0 !important;    
+    margin: 0 !important;
+}
