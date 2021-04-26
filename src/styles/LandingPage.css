@@ -25,3 +25,10 @@
 }
 
 
+.btn-container{
+    display: inline;
+}
+
+.btn-container button{
+    margin: 10px;
+}
