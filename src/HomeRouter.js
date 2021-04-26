@@ -1,20 +1,19 @@
-import React from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
-import LandingPage from './components/public/LandingPage';
-import LoginForm from './components/public/LoginForm';
-import RegisterForm from './components/public/RegisterForm';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Home from "./components/private/Home";
+import LandingPage from "./components/public/LandingPage";
 
 export default function HomeRouter() {
-    return (
-        <Router>
-            <LandingPage/>
-            <LoginForm />
-            <RegisterForm/>
-        </Router>
-    )
+  return (
+    <Router>
+      <Switch>
+        <Route path="/home">
+          <Home />
+        </Route>
+        <Route path="/">
+          <LandingPage />
+        </Route>
+      </Switch>
+    </Router>
+  );
 }

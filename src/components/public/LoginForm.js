@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import RegisterForm from "./RegisterForm";
 
 export default function LoginForm() {
@@ -31,7 +32,7 @@ export default function LoginForm() {
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
         <div className="btn-container">
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" as={Link} to="/home">
             Submit
           </Button>
 
