@@ -23,3 +23,10 @@
     padding: 0 !important;    
     margin: 0 !important;
 }
+
+.form-div{
+    display: flex;
+    align-items: center;
+    
+}
+
