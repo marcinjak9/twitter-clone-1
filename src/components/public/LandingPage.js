@@ -8,7 +8,7 @@ export default function LandingPage() {
       <Row className="landing-row">
         <Col md={6} sm={12} className="landing-col">
           <Row>
-            <Col className="form-container" sm={10}>
+            <Col className="d-flex justify-content-center ">
               <div className="form-div">
                 <Form>
                   <Form.Group controlId="formBasicEmail">
