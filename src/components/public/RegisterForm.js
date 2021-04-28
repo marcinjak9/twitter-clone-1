@@ -1,7 +1,22 @@
-import React from "react";
-import { Container, Row, Col, Modal, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Row, Col, Modal, Button, Form } from "react-bootstrap";
 
 export default function RegisterForm(props) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const signup = () => {
+    fetch("http://nexta.world/auth/signup", {
+      method: "POST",
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+      headers: { "Content-Type": "application/json" },
+      mode: "no-cors",
+    })
+      .then((res) => res.json())
+      .then((json) => console.log(json));
+  };
   return (
     <div>
       <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
@@ -14,27 +29,42 @@ export default function RegisterForm(props) {
           <Container>
             <Row>
               <Col xs={12} md={8}>
-                .col-xs-12 .col-md-8
-              </Col>
-              <Col xs={6} md={4}>
-                .col-xs-6 .col-md-4
-              </Col>
-            </Row>
+                <Form>
+                  <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="user name"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                    />
+                    <Form.Text className="text-muted">
+                      We'll never share your email with anyone else.
+                    </Form.Text>
+                  </Form.Group>
 
-            <Row>
-              <Col xs={6} md={4}>
-                .col-xs-6 .col-md-4
-              </Col>
-              <Col xs={6} md={4}>
-                .col-xs-6 .col-md-4
-              </Col>
-              <Col xs={6} md={4}>
-                .col-xs-6 .col-md-4
+                  <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      type="password"
+                      placeholder="Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="formBasicCheckbox">
+                    <Form.Check type="checkbox" label="Check me out" />
+                  </Form.Group>
+                </Form>
               </Col>
             </Row>
           </Container>
         </Modal.Body>
         <Modal.Footer>
+          <Button variant="primary" type="submit" onClick={signup}>
+            Register
+          </Button>
+
           <Button onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>

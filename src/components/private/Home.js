@@ -4,6 +4,7 @@ import NavbarDesktop from "./NavbarDesktop";
 import NavbarMobile from "./NavbarMobile";
 import TweetForm from "./TweetForm";
 import TweetList from "./TweetList";
+import SearchBar from "./SearchBar";
 
 export default function Home() {
   return (
@@ -16,16 +17,19 @@ export default function Home() {
             xs={4}
             className="d-block d-sm-block d-md-none d-xl-none d-lg-none"
           >
-            <NavbarMobile/>
+            <NavbarMobile />
           </Col>
           <Col md={2} className="d-none d-md-block d-lg-block">
-            <NavbarDesktop/>
+            <NavbarDesktop />
           </Col>
           <Col md={7} sm={8} xs={8}>
-            <TweetForm/>
-            <TweetList/>
+            <TweetForm />
+            <TweetList />
           </Col>
-          <Col md={3} className="d-none d-md-block d-lg-block">tendenze</Col>
+          <Col md={3} className="d-none d-md-block d-lg-block">
+            <SearchBar />
+            tendenze
+          </Col>
         </Row>
       </Container>
     </div>
