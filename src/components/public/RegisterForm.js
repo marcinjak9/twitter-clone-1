@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Modal, Button, Form } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 export default function RegisterForm(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
   const signup = () => {
     fetch("https://secret-temple-42258.herokuapp.com/auth/signup", {
       method: "POST",
@@ -14,7 +16,13 @@ export default function RegisterForm(props) {
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
-      .then((json) => console.log(json));
+      .then((json) => {
+        if (json.user.id) {
+          history.push("/home");
+        } else {
+          alert("non sei registrato");
+        }
+      });
   };
   return (
     <div>
