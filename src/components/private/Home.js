@@ -6,7 +6,7 @@ import TweetForm from "./TweetForm";
 import TweetList from "./TweetList";
 import SearchBar from "./SearchBar";
 
-export default function Home() {
+export default function Home({token}) {
   return (
     <div>
       <Container>
@@ -24,7 +24,7 @@ export default function Home() {
           </Col>
           <Col md={7} sm={8} xs={8}>
             <TweetForm />
-            <TweetList />
+            <TweetList token={token}/>
           </Col>
           <Col md={3} className="d-none d-md-block d-lg-block">
             <SearchBar />

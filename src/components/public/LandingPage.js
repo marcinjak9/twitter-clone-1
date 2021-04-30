@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "../../styles/LandingPage.css";
 import LoginForm from "./LoginForm";
 
-export default function LandingPage() {
+export default function LandingPage({token, setToken}) {
   return (
     <Container className="landing-container">
       <Row className="landing-row">
@@ -11,7 +11,7 @@ export default function LandingPage() {
           <Row>
             <Col className="d-flex justify-content-center ">
               <div className="form-div">
-                <LoginForm/>
+                <LoginForm token={token} setToken={setToken}/>
               </div>
             </Col>
           </Row>

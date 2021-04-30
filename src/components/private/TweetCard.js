@@ -8,12 +8,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function TweetCard() {
+export default function TweetCard({ tweetsitem }) {
+  const {id, text, created, updated, tags, creator, liked, like} = tweetsitem;
   return (
+
     <div>
       <Card>
         <div className="tweet-info">
-          <div>nome utente</div>
+          <div>{creator}</div>
           <div>tag utente</div>
           <div>orario</div>
         </div>
