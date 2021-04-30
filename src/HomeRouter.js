@@ -1,17 +1,20 @@
-import React from "react";
+import React,{useState} from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./components/private/Home";
 import LandingPage from "./components/public/LandingPage";
 
 export default function HomeRouter() {
+
+  const [token, setToken] = useState("");
+
   return (
     <Router>
       <Switch>
-        <Route path="/home">
-          <Home />
+        <Route path="/home" >
+          <Home token={token}/>
         </Route>
         <Route path="/">
-          <LandingPage />
+          <LandingPage token={token} setToken={setToken}/>
         </Route>
       </Switch>
     </Router>

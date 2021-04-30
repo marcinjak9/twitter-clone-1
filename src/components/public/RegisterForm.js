@@ -18,11 +18,12 @@ export default function RegisterForm(props) {
       .then((res) => res.json())
       .then((json) => {
         if (json.user.id) {
-          history.push("/home");
+          props.onHide()
         } else {
           alert("non sei registrato");
         }
       });
+
   };
   return (
     <div>
