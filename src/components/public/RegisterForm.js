@@ -5,14 +5,13 @@ export default function RegisterForm(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const signup = () => {
-    fetch("http://nexta.world/auth/signup", {
+    fetch("https://secret-temple-42258.herokuapp.com/auth/signup", {
       method: "POST",
       body: JSON.stringify({
         username,
         password,
       }),
       headers: { "Content-Type": "application/json" },
-      mode: "no-cors",
     })
       .then((res) => res.json())
       .then((json) => console.log(json));
