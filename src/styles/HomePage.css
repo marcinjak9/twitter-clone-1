@@ -1,18 +1,24 @@
-.form-tweet{
-
-    margin: 20px;
+.form-tweet {
+  margin: 20px;
 }
 
-.form-footer-btn{
-    text-align: right;
+.form-footer-btn {
+  text-align: right;
 }
 
-.tweet-icon-container{
-    display: flex;
-    justify-content: space-around;
-    margin: 10px 0 10px 0;
+.tweet-icon-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0 10px 0;
 }
 
-.tweet-info{
-    display: flex;
+.tweet-info {
+  display: flex;
+}
+.search-results {
+  position: absolute;
+  width: 100%;
+}
+.search-bar {
+  position: relative;
 }
