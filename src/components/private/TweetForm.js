@@ -10,7 +10,7 @@ export default function TweetForm({listUpdate}) {
   
 
   const newTweet = (e) =>{
-
+  e.preventDefault();
   ApiUtils("tweets","POST", {text} )
       .then((json) => {
         listUpdate();
