@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import { Form, Button, Card } from "react-bootstrap";
 import "../../styles/HomePage.css"
+import ApiUtils from "./ApiUtils";
 
 export default function TweetForm({token}) {
 
@@ -9,15 +10,10 @@ export default function TweetForm({token}) {
   
 
   const newTweet = () =>{
-    fetch("https://secret-temple-42258.herokuapp.com/tweets/", {
-      method: "POST",
-      body: {text : text},
-      headers: { "Content-Type": "application/json", "Authorization" : `Bearer ${token}`},
-    })
-      .then((res) => res.json())
+
+  ApiUtils("tweets","POST", {text} )
       .then((json) => console.log(json) );
   }
-
 
   return (
     <div>
