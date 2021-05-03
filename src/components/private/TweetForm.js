@@ -3,27 +3,30 @@ import { Form, Button, Card } from "react-bootstrap";
 import "../../styles/HomePage.css"
 import ApiUtils from "./ApiUtils";
 
-export default function TweetForm({token}) {
+export default function TweetForm({listUpdate}) {
 
   const [tweets, setTweets] = useState([]);
   const [text, setText] = useState("");
   
 
-  const newTweet = () =>{
+  const newTweet = (e) =>{
 
   ApiUtils("tweets","POST", {text} )
-      .then((json) => console.log(json) );
+      .then((json) => {
+        listUpdate();
+        setText("");
+      });
   }
 
   return (
     <div>
     <Card>
-      <Form className="form-tweet">
+      <Form className="form-tweet" onSubmit={newTweet}>
         <Form.Group className="form-text">
-          <Form.Control type="text" placeholder="scrivi un tweet"  onChange={(e) => setText(e.target.value)}/>
+          <Form.Control type="text" placeholder="scrivi un tweet" onChange={(e) => setText(e.target.value)}/>
         </Form.Group>
         <div className="form-footer-btn">
-        <Button className="btn-tweet" onClick={newTweet}>tweet</Button>
+        <Button className="btn-tweet" type="submit" >tweet</Button>
         </div>
       </Form>
       </Card>

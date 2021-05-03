@@ -2,7 +2,6 @@ import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import NavbarDesktop from "./NavbarDesktop";
 import NavbarMobile from "./NavbarMobile";
-import TweetForm from "./TweetForm";
 import TweetList from "./TweetList";
 import SearchBar from "./SearchBar";
 
@@ -23,7 +22,6 @@ export default function Home({token}) {
             <NavbarDesktop />
           </Col>
           <Col md={7} sm={8} xs={8}>
-            <TweetForm />
             <TweetList token={token}/>
           </Col>
           <Col md={3} className="d-none d-md-block d-lg-block">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TweetCard from "./TweetCard";
 import ApiUtils from "./ApiUtils";
+import TweetForm from "./TweetForm";
 
 export default function TweetList({ token }) {
   const [tweets, setTweets] = useState([]);
@@ -13,10 +14,8 @@ export default function TweetList({ token }) {
       .then((res) => res.json())
       .then((json) => setTweets(json))*/
 
-    ApiUtils("tweets").then((json) => setOrderedTweets(json));
-    console.log(tweets);
+    listUpdate();
   }, [token]);
-
 
   //CRE
   const setOrderedTweets = (tweets) => {
@@ -27,9 +26,9 @@ export default function TweetList({ token }) {
       return -1;
     });
     setTweets(t);
-  }
+  };
 
- //DEC NON UTILIZZATO GIUSTO PER RIFERIMENTO
+  //DEC NON UTILIZZATO GIUSTO PER RIFERIMENTO
   const setOldestTweets = (tweets) => {
     const t = tweets.sort(function (a, b) {
       if (new Date(a.created).getTime() > new Date(b.created).getTime()) {
@@ -38,11 +37,17 @@ export default function TweetList({ token }) {
       return -1;
     });
     setTweets(t);
-  }
+  };
 
+
+ const listUpdate = () => {
+   ApiUtils("tweets").then((json) => setOrderedTweets(json));
+ }
 
   return (
     <div>
+      <TweetForm listUpdate={listUpdate}/>
+
       {tweets.map((tweetsitem, index) => (
         <TweetCard tweetsitem={tweetsitem} key={index} />
       ))}
