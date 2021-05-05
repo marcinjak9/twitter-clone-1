@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Button, Card } from "react-bootstrap";
 import moment from "moment";
 import {
@@ -8,10 +8,20 @@ import {
   faUpload,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ApiUtils from "./ApiUtils";
 
 export default function TweetCard({ tweetsitem }) {
-  const { id, text, created, updated, tags, creator, liked, like } = tweetsitem;
-  console.log("tweets items", tweetsitem);
+  let { _id, text, created, updated, tags, creator, liked } = tweetsitem;
+  console.log(tweetsitem);
+  const [like, setLike] = useState(tweetsitem.like);
+  const likeTweet = () => {
+    ApiUtils(`tweets/like/${_id}`, "POST").then((json) => {
+      setLike(json.like);
+    });
+  };
+  const unlikeTweet = () => {
+    ApiUtils(`tweets/unlike/${_id}`, "POST");
+  };
 
   return (
     <div>
@@ -25,7 +35,9 @@ export default function TweetCard({ tweetsitem }) {
         <div> {text} </div>
 
         <div className="tweet-icon-container">
-          <FontAwesomeIcon icon={faHeart} />
+          <div>
+            <FontAwesomeIcon icon={faHeart} onClick={likeTweet} /> {like}
+          </div>
           <FontAwesomeIcon icon={faComment} />
           <FontAwesomeIcon icon={faRetweet} />
           <FontAwesomeIcon icon={faUpload} />
