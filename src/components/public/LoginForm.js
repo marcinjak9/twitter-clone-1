@@ -29,6 +29,7 @@ export default function LoginForm({token, setToken}) {
       .then((json) => {
         if (json.token) {
           setToken(json.token)
+          localStorage.setItem('userId', json.user.id)
           history.push("/home");
         } else {
           alert("non sei registrato");

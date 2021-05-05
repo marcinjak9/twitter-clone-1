@@ -27,8 +27,8 @@ export default function TweetList({ token }) {
     <div>
       <TweetForm listUpdate={listUpdate} />
 
-      {tweets.map((tweetsitem, index) => (
-        <TweetCard tweetsitem={tweetsitem} key={index} />
+      {tweets.map((tweetsitem) => (
+        <TweetCard tweetsitem={tweetsitem} key={tweetsitem.id} />
       ))}
     </div>
   );
