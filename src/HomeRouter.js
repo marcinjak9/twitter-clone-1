@@ -9,14 +9,11 @@ export default function HomeRouter() {
   useEffect(() => {
     if(token){
       salvaToken(token);
-    } 
-    console.log(1)
+    }
   }, [token]);
 
   useEffect(() => {
     chiamaToken();
-    console.log(2)
-
   }, []);
 
   const salvaToken = (token) => {
@@ -29,14 +26,14 @@ export default function HomeRouter() {
       setToken(itemToken);
     } else {
       console.log("token non trovato");
-    }    
+    }
   };
 
   return (
     <Router>
       <Switch>
         <Route path="/home">
-          <Home token={token} chiamaToken={chiamaToken}/>
+          <Home token={token} />
         </Route>
         <Route path="/">
           <LandingPage token={token} setToken={setToken} />

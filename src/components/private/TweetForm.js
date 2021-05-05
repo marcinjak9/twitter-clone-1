@@ -4,11 +4,9 @@ import "../../styles/HomePage.css"
 import ApiUtils from "./ApiUtils";
 
 export default function TweetForm({listUpdate}) {
-
   const [tweets, setTweets] = useState([]);
   const [text, setText] = useState("");
   
-
   const newTweet = (e) =>{
   e.preventDefault();
   ApiUtils("tweets","POST", {text} )
