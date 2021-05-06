@@ -9,11 +9,11 @@ export default function Home({token}) {
   return (
     <div>
       <Container>
-        <Row>
+        <Row >
           <Col
             md={2}
             sm={4}
-            xs={4}
+            xs={2}
             className="d-block d-sm-block d-md-none d-xl-none d-lg-none"
           >
             <NavbarMobile />
@@ -21,7 +21,7 @@ export default function Home({token}) {
           <Col md={2} className="d-none d-md-block d-lg-block">
             <NavbarDesktop />
           </Col>
-          <Col md={7} sm={8} xs={8}>
+          <Col md={7} sm={8} xs={10}>
             <TweetList token={token}/>
           </Col>
           <Col md={3} className="d-none d-md-block d-lg-block">

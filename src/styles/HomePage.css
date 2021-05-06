@@ -22,3 +22,7 @@
 .search-bar {
   position: relative;
 }
+
+.container {
+  width: 100%;
+}

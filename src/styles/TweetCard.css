@@ -1,7 +1,8 @@
 .tweet-user {
-    color: red;
     margin: 0;
     padding: 0 0;
+    display: flex;
+    align-items: center;
 }
 
 .profile-img {
