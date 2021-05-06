@@ -9,35 +9,35 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ApiUtils from "./ApiUtils";
-import { Button } from "react-bootstrap";
+import { Button, Alert } from "react-bootstrap";
+import "../../styles/TweetCard.css";
 
 export default function TweetCard({ tweetsitem, key }) {
   const { _id, text, created, updated, tags, creator } = tweetsitem;
-  const userId = localStorage.getItem('userId')
+  const userId = localStorage.getItem("userId");
   const [like, setLike] = useState(0);
   const [liked, setLiked] = useState();
-  
+
   // Con questo useffect settiamo lo stato iniziale del nostro tweet, e rispondiamo ad eventuali cambiamenti
   useEffect(() => {
-    setLike(tweetsitem.like)
-    setLiked(tweetsitem.liked)
+    setLike(tweetsitem.like);
+    setLiked(tweetsitem.liked);
   }, [tweetsitem]);
-
 
   // BUG: se si clicca velocemente partono diverse chiamate e finisce in errore
   // Una soluzione potrebbe essere disabilitare con uno stato il pulsante mentre la chiamata è in carso (in caso mettere un icona di caricamento)
   const triggerLike = () => {
     // con find troviamo se nella lista utenti dentro tweetsitem.liked c'è il nostro user ID
     const alreadyLiked = liked.find((users) => {
-      return users.id === userId
+      return users.id === userId;
     });
     // Se esiste allora procediamo con unlike, senno con un like
-    if(alreadyLiked) {
+    if (alreadyLiked) {
       unlikeTweet();
     } else {
       likeTweet();
     }
-  }
+  };
 
   const likeTweet = () => {
     ApiUtils(`tweets/like/${_id}`, "POST").then((json) => {
@@ -57,27 +57,38 @@ export default function TweetCard({ tweetsitem, key }) {
     <div>
       <Card>
         <div className="tweet-info">
-          <div>{creator.name}</div>
-          <div>{creator.username}</div>
-          <div>{moment(created).fromNow()}</div>
+          <img
+            src="https://source.unsplash.com/20x20/?nature"
+            alt="profile-img"
+            className="profile-img"
+          />
+          <div className="tweet-name">{creator.name}</div>
+          <Alert className="tweet-user" variant="primary">
+            {creator.username}
+          </Alert>
+          <div className="time">
+            <Alert className="tweet-time" variant="warning">
+              {moment(created).fromNow()}{" "}
+            </Alert>
+          </div>
         </div>
 
         <div> {text} </div>
 
         <div className="tweet-icon-container">
           {/* Non è mai una buona pratica usare onClick su un elemento diverso da button, in questo caso ho racchiuso le icon dentro i bnutton di Bootstrap */}
-            <Button size="sm" onClick={triggerLike}>
-              <FontAwesomeIcon size="xs" icon={faHeart} /> {like}
-            </Button>
-            <Button size="sm" onClick={triggerLike}>
-              <FontAwesomeIcon size="xs" icon={faComment} />
-            </Button>
-            <Button size="sm" onClick={triggerLike}>
-              <FontAwesomeIcon size="xs" icon={faRetweet} />
-            </Button>
-            <Button size="sm" onClick={triggerLike}>
-              <FontAwesomeIcon size="xs" icon={faUpload} />
-            </Button>
+          <Button size="sm" onClick={triggerLike}>
+            <FontAwesomeIcon size="xs" icon={faHeart} /> {like}
+          </Button>
+          <Button size="sm" onClick={triggerLike}>
+            <FontAwesomeIcon size="xs" icon={faComment} />
+          </Button>
+          <Button size="sm" onClick={triggerLike}>
+            <FontAwesomeIcon size="xs" icon={faRetweet} />
+          </Button>
+          <Button size="sm" onClick={triggerLike}>
+            <FontAwesomeIcon size="xs" icon={faUpload} />
+          </Button>
         </div>
       </Card>
     </div>
