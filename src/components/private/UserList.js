@@ -6,7 +6,14 @@ export default function UserList() {
   const [userList, setUserList] = useState([]);
 
   const fetchUser = () => {
-    ApiUtils(`users`).then((json) => setUserList(json));
+    ApiUtils(`users`).then((json) => setOrderedUsers(json));
+  };
+
+  const setOrderedUsers = (users, direction = 1) => {
+    const u = users.sort((a, b) => {
+      return a.followersCount < b.followersCount ? direction : -direction;
+    });
+    setUserList(u);
   };
 
   useEffect(() => {
@@ -26,6 +33,7 @@ export default function UserList() {
           followersCount={user.followersCount}
           id={user.id}
           avatar={`https://i.pravatar.cc/30?img=${index + 1}`}
+          followers={user.followers}
         />
       ))}
     </div>

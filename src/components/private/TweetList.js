@@ -12,16 +12,16 @@ export default function TweetList({ token }) {
 
   const setOrderedTweets = (tweets, direction = 1) => {
     const t = tweets.sort((a, b) => {
-        return (new Date(a.created).getTime() < new Date(b.created).getTime())
-          ? direction
-          : -direction;
+      return new Date(a.created).getTime() < new Date(b.created).getTime()
+        ? direction
+        : -direction;
     });
     setTweets(t);
   };
 
   const listUpdate = () => {
-    ApiUtils("tweets").then((json) => setOrderedTweets(json));
-  }
+    ApiUtils("tweets/feed").then((json) => setOrderedTweets(json));
+  };
 
   return (
     <div>
