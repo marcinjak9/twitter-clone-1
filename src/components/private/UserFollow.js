@@ -1,5 +1,6 @@
 import React from "react";
-import {Button, Image } from "react-bootstrap";
+import { Button, Image } from "react-bootstrap";
+import ApiUtils from "./ApiUtils";
 
 export default function UserFollow({
   username,
@@ -9,12 +10,22 @@ export default function UserFollow({
   avatar,
   following,
 }) {
-  return (
-    <div>
-      {username}
+  const userId = localStorage.getItem("userId");
 
-      <Image src={avatar} roundedCircle />
-      <Button variant="info">Following</Button>
+  const follow = () => {
+    ApiUtils(`users/follow/${id}`, "POST").then((json) => console.log(json));
+  };
+
+  return (
+    <div className="d-flex flex-row justify-content-between mb-2">
+      <div className="d-flex flex-row text-left">
+        <Image className="mr-2" src={avatar} roundedCircle />
+        {username.split("@")[0]}
+      </div>
+
+      <Button size="sm" variant="info" onClick={follow}>
+        Follow
+      </Button>
     </div>
   );
 }

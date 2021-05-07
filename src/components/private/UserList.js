@@ -17,7 +17,7 @@ export default function UserList() {
 
   return (
     <div>
-      {userList.map((user,index) => (
+      {userList.map((user, index) => (
         <UserFollow
           user={user}
           username={user.username}
@@ -25,7 +25,7 @@ export default function UserList() {
           followingCount={user.followingCount}
           followersCount={user.followersCount}
           id={user.id}
-          avatar={`https://i.pravatar.cc/30?img=${index+1}`}
+          avatar={`https://i.pravatar.cc/30?img=${index + 1}`}
         />
       ))}
     </div>
