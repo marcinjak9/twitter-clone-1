@@ -4,6 +4,7 @@ import NavbarDesktop from "./NavbarDesktop";
 import NavbarMobile from "./NavbarMobile";
 import TweetList from "./TweetList";
 import SearchBar from "./SearchBar";
+import UserList from "./UserList";
 
 export default function Home({token}) {
   return (
@@ -25,8 +26,10 @@ export default function Home({token}) {
             <TweetList token={token}/>
           </Col>
           <Col md={3} className="d-none d-md-block d-lg-block">
-            <SearchBar />
+
+      
             tendenze
+            <UserList/>
           </Col>
         </Row>
       </Container>
