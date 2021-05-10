@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import ApiUtils from "./ApiUtils";
 import TweetCard from "./TweetCard";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Image } from "react-bootstrap";
 
 const Profilelist = ({ id, token }) => {
   const [tweets, setTweets] = useState([]);
   const [username, setUsername] = useState("");
   const [followersCount, setFollowersCount] = useState(0);
   const userId = localStorage.getItem("userId");
-
+  const avatar = "https://i.pravatar.cc/30?img=" + Math.random();
   const [alreadyFollowed, setAlreadyFollowed] = useState(false);
   useEffect(() => {
     listTweets();
@@ -65,6 +65,12 @@ const Profilelist = ({ id, token }) => {
             src="https://source.unsplash.com/1600x900/?nature"
           />
           <Card.Body>
+            <Image
+              style={{ width: 30, height: 30 }}
+              className="mr-2"
+              src={avatar}
+              roundedCircle
+            />
             <Card.Title> {username.split("@")[0]} </Card.Title>
             <Card.Text> followers: {followersCount}</Card.Text>
             <Button variant="primary" onClick={triggerFollow}>
