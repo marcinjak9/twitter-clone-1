@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./components/private/Home";
 import LandingPage from "./components/public/LandingPage";
+import Profile from "./components/private/Profile";
 
 export default function HomeRouter() {
   const [token, setToken] = useState("");
 
   useEffect(() => {
-    if(token){
+    if (token) {
       salvaToken(token);
     }
   }, [token]);
@@ -34,6 +35,9 @@ export default function HomeRouter() {
       <Switch>
         <Route path="/home">
           <Home token={token} />
+        </Route>
+        <Route path="/profile/:id">
+          <Profile token={token} />
         </Route>
         <Route path="/">
           <LandingPage token={token} setToken={setToken} />
