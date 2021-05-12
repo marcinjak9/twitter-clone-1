@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { ListGroup } from "react-bootstrap";
-import ApiUtils from "./ApiUtils";
 import _ from "lodash";
 
-const TrendList = () => {
+const TrendList = ({ tweetList }) => {
   const [tags, setTags] = useState([]);
-
   useEffect(() => {
-    fetchTweets();
+    processTags(tweetList);
   }, []);
 
-  const fetchTweets = () => {
-    ApiUtils("tweets/feed").then((json) => {
-      processTags(json);
-    });
-  };
   const processTags = (json) => {
     const tagList = [];
     json.map((tweetItem) => {
