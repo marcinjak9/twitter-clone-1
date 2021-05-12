@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Image } from "react-bootstrap";
 import ApiUtils from "./ApiUtils";
 
@@ -10,11 +10,18 @@ export default function UserFollow({
   avatar,
   following,
   followers,
+  fetchUser,
 }) {
+  const [alreadyFollowed, setAlreadyFollowed] = useState(false);
   const userId = localStorage.getItem("userId");
-  const alreadyFollowed = followers.find((id) => {
-    return id === userId;
-  });
+
+  useEffect(() => {
+    const found = followers.find((id) => {
+      return id === userId;
+    });
+    setAlreadyFollowed(found);
+  }, []);
+
   const triggerFollow = () => {
     if (alreadyFollowed) {
       unfollow();
@@ -24,11 +31,17 @@ export default function UserFollow({
   };
 
   const follow = () => {
-    ApiUtils(`users/follow/${id}`, "POST").then((json) => console.log(json));
+    ApiUtils(`users/follow/${id}`, "POST").then((json) => {
+      setAlreadyFollowed(true);
+      fetchUser();
+    });
   };
 
   const unfollow = () => {
-    ApiUtils(`users/unfollow/${id}`, "POST").then((json) => console.log(json));
+    ApiUtils(`users/unfollow/${id}`, "POST").then((json) => {
+      setAlreadyFollowed(false);
+      fetchUser();
+    });
   };
 
   return (

@@ -34,6 +34,7 @@ export default function UserList() {
           id={user.id}
           avatar={`https://i.pravatar.cc/30?img=${index + 1}`}
           followers={user.followers}
+          fetchUser={fetchUser}
         />
       ))}
     </div>
