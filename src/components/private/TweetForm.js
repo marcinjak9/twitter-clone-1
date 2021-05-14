@@ -3,18 +3,18 @@ import { Form, Button, Card } from "react-bootstrap";
 import "../../styles/HomePage.css"
 import ApiUtils from "./ApiUtils";
 
-export default function TweetForm({listUpdate}) {
-  const [tweets, setTweets] = useState([]);
+export default function TweetForm({fetchTweets}) {
   const [text, setText] = useState("");
   
   const newTweet = (e) =>{
   e.preventDefault();
   ApiUtils("tweets","POST", {text} )
       .then((json) => {
-        listUpdate();
+        fetchTweets();
         setText("");
       });
   }
+
 
   return (
     <div>

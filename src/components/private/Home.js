@@ -17,7 +17,7 @@ export default function Home({ token }) {
     });
   };
   useEffect(() => {
-    fetchTweets();
+    fetchTweets();  
   }, []);
   return (
     <div>
@@ -35,7 +35,7 @@ export default function Home({ token }) {
             <NavbarDesktop />
           </Col>
           <Col md={7} sm={8} xs={8}>
-            <TweetList token={token} />
+            <TweetList token={token} tweetList={tweetList} fetchTweets={fetchTweets}/>
           </Col>
           <Col md={3} className="d-none d-md-block d-lg-block">
             <div className="mb-4">

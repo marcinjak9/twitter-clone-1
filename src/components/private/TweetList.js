@@ -3,12 +3,12 @@ import TweetCard from "./TweetCard";
 import ApiUtils from "./ApiUtils";
 import TweetForm from "./TweetForm";
 
-export default function TweetList({ token }) {
+export default function TweetList({ token, tweetList, fetchTweets}) {
   const [tweets, setTweets] = useState([]);
 
   useEffect(() => {
-    listUpdate();
-  }, [token]);
+    setOrderedTweets(tweetList);
+  }, [token, tweetList]);
 
   const setOrderedTweets = (tweets, direction = 1) => {
     const t = tweets.sort((a, b) => {
@@ -25,7 +25,7 @@ export default function TweetList({ token }) {
 
   return (
     <div>
-      <TweetForm listUpdate={listUpdate} />
+      <TweetForm listUpdate={listUpdate} fetchTweets={fetchTweets}/>
 
       {tweets.map((tweetsitem) => (
         <TweetCard tweetsitem={tweetsitem} key={tweetsitem.id} />

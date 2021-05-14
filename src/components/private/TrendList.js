@@ -6,7 +6,8 @@ const TrendList = ({ tweetList }) => {
   const [tags, setTags] = useState([]);
   useEffect(() => {
     processTags(tweetList);
-  }, []);
+    console.log(tags)
+  }, [tweetList]);
 
   const processTags = (json) => {
     const tagList = [];
