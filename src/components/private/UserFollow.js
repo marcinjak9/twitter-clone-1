@@ -20,7 +20,7 @@ export default function UserFollow({
       return id === userId;
     });
     setAlreadyFollowed(found);
-  }, []);
+  }, [id]);
 
   const triggerFollow = () => {
     if (alreadyFollowed) {
