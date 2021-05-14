@@ -39,6 +39,9 @@ export default function HomeRouter() {
         <Route path="/profile/:id">
           <Profile token={token} />
         </Route>
+        <Route path="/search/:q">
+          <Home token={token} />
+        </Route>
         <Route path="/">
           <LandingPage token={token} setToken={setToken} />
         </Route>

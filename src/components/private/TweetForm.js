@@ -6,7 +6,7 @@ import ApiUtils from "./ApiUtils";
 export default function TweetForm({ fetchTweets }) {
   const [text, setText] = useState("");
 
-   const tweetInput  = useRef(null)
+  const tweetInput = useRef(null);
 
   const newTweet = (e) => {
     e.preventDefault();
@@ -20,7 +20,6 @@ export default function TweetForm({ fetchTweets }) {
       return alert("scrivi il cazzo di tweet");
     }
   };
-
 
   return (
     <div>
