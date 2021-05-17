@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { ListGroup } from "react-bootstrap";
+import { ListGroup, Card } from "react-bootstrap";
 import _ from "lodash";
 
 const TrendList = ({ tweetList }) => {
   const [tags, setTags] = useState([]);
   useEffect(() => {
     processTags(tweetList);
-    console.log(tags)
+    console.log(tags);
   }, [tweetList]);
 
   const processTags = (json) => {
@@ -27,15 +27,18 @@ const TrendList = ({ tweetList }) => {
     setTags(newArray);
   };
   return (
-    <div>
-      <ListGroup>
-        {tags.map((tagItem) => (
-          <ListGroup.Item key={tagItem.id}>
-            {tagItem.name} {tagItem.count}
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
-    </div>
+    <Card>
+      <Card.Body>
+        <Card.Title className="mb-4">Tendenze</Card.Title>
+        <ListGroup>
+          {tags.map((tagItem) => (
+            <ListGroup.Item key={tagItem.id}>
+              {tagItem.name} {tagItem.count}
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
+      </Card.Body>
+    </Card>
   );
 };
 export default TrendList;

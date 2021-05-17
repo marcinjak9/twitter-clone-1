@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Card } from "react-bootstrap";
 import ApiUtils from "./ApiUtils.js";
 import UserFollow from "./UserFollow.js";
 
@@ -23,21 +24,24 @@ export default function UserList() {
   console.log(userList);
 
   return (
-    <div>
-      {userList.map((user, index) => (
-        <UserFollow
-          user={user}
-          username={user.username}
-          following={user.following}
-          followingCount={user.followingCount}
-          followersCount={user.followersCount}
-          id={user.id}
-          avatar={`https://i.pravatar.cc/30?img=${index + 1}`}
-          key={index}
-          followers={user.followers}
-          fetchUser={fetchUser}
-        />
-      ))}
-    </div>
+    <Card>
+      <Card.Body>
+        <Card.Title className="mb-4">Profili da seguire</Card.Title>
+        {userList.map((user, index) => (
+          <UserFollow
+            user={user}
+            username={user.username}
+            following={user.following}
+            followingCount={user.followingCount}
+            followersCount={user.followersCount}
+            id={user.id}
+            avatar={`https://i.pravatar.cc/30?img=${index + 1}`}
+            key={index}
+            followers={user.followers}
+            fetchUser={fetchUser}
+          />
+        ))}
+      </Card.Body>
+    </Card>
   );
 }

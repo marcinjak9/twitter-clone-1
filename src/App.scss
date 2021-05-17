@@ -1,7 +1,7 @@
-@import "../node_modules/bootstrap/scss/bootstrap";
-@import 'styles/Homepage.scss';
-@import 'styles/LandingPage.scss';
-
+@import "styles/Homepage.scss";
+@import "styles/LandingPage.scss";
+@import "styles/Theme.scss";
+@import "styles/Variables.scss";
 .App {
   text-align: center;
 }
@@ -40,3 +40,4 @@
     transform: rotate(360deg);
   }
 }
+@import "../node_modules/bootstrap/scss/bootstrap";

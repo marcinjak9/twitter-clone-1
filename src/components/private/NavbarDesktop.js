@@ -8,20 +8,21 @@ export default function NavbarDesktop() {
   return (
     <div>
       <Nav defaultActiveKey="/home" className="flex-column navbar">
-        <Nav.Link href="/home">
+        {/* <Nav.Link className="font-weight-bold " href="/home">
           <FontAwesomeIcon icon={faTwitter} />
-        </Nav.Link>
-        <Nav.Link eventKey="link-1">
+        </Nav.Link> */}
+
+        <Nav.Link className="font-weight-bold" eventKey="link-1">
           <FontAwesomeIcon icon={faHome} />
-          Home
+          <p>Home</p>
         </Nav.Link>
-        <Nav.Link eventKey="link-2">
+        <Nav.Link className="font-weight-bold" eventKey="link-2">
           <FontAwesomeIcon icon={faSearch} />
-          Esplora
+          <p>Esplora</p>
         </Nav.Link>
-        <Nav.Link eventKey="link-2">
+        <Nav.Link className="font-weight-bold" eventKey="link-2">
           <FontAwesomeIcon icon={faBell} />
-          Notifiche
+          <p>Notifiche</p>
         </Nav.Link>
       </Nav>
     </div>

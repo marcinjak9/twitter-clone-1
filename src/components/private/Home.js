@@ -44,23 +44,21 @@ export default function Home({ token }) {
           <Col md={2} className="d-none d-md-block d-lg-block">
             <NavbarDesktop />
           </Col>
-          <Col md={7} sm={8} xs={8}>
+          <Col md={6} sm={8} xs={8}>
             <TweetList
               token={token}
               tweetList={tweetList}
               fetchTweets={fetchTweets}
             />
           </Col>
-          <Col md={3} className="d-none d-md-block d-lg-block">
+          <Col md={4} className="d-none d-md-block d-lg-block">
             <div className="mb-4">
               <SearchBar />
             </div>
             <div className="mb-4">
-              Tendenze
               <TrendList tweetList={tweetList} />
             </div>
             <div>
-              Profili da seguire
               <UserList />
             </div>
           </Col>

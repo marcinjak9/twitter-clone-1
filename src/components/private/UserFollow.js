@@ -45,26 +45,32 @@ export default function UserFollow({
   };
 
   return (
-    <div className="d-flex flex-row justify-content-between mb-2">
-      <div className="d-flex flex-row text-left">
+    <div className="d-flex flex-row justify-content-between mb-4 align-items-center">
+      <div className="d-flex flex-row text-left align-items-center">
         <Image
           style={{ width: 30, height: 30 }}
-          className="mr-2"
+          className="mr-4"
           src={avatar}
           roundedCircle
         />
         <div>
-          <p>
+          <p className="mb-0">
             {username.split("@")[0]}
             <br />
             followers: {followersCount}
           </p>
         </div>
       </div>
-
-      <Button size="sm" variant="info" onClick={triggerFollow}>
-        {alreadyFollowed ? "unfollow" : "Follow"}
-      </Button>
+      <div>
+        <Button
+          className="follow-button"
+          size="sm"
+          variant="outline-info"
+          onClick={triggerFollow}
+        >
+          {alreadyFollowed ? "unfollow" : "Follow"}
+        </Button>
+      </div>
     </div>
   );
 }

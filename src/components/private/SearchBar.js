@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, InputGroup } from "react-bootstrap";
 import SearchResults from "./SearchResults";
 import { useHistory } from "react-router-dom";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -14,20 +16,22 @@ const SearchBar = () => {
     }
   };
   return (
-    <div className="search-bar">
+    <div className="search-bar mt-4">
       <Form onSubmit={onSearch}>
-        <Form.Group controlId="formBasicEmail">
+        <InputGroup controlId="formBasicEmail">
           <Form.Control
             type="text"
             placeholder="cerca"
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Search
-        </Button>
+          <InputGroup.Append>
+            <Button variant="primary">
+              <FontAwesomeIcon icon={faSearch} />
+            </Button>
+          </InputGroup.Append>
+        </InputGroup>
       </Form>
-      <SearchResults />
+      {/* <SearchResults /> */}
     </div>
   );
 };
