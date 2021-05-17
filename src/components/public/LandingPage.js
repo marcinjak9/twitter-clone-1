@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import "../../styles/LandingPage.css";
+// import "../../styles/LandingPage.css";
 import LoginForm from "./LoginForm";
 
 export default function LandingPage({token, setToken}) {
