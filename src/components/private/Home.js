@@ -35,8 +35,8 @@ export default function Home({ token }) {
         <Row>
           <Col
             md={2}
-            sm={4}
-            xs={4}
+            sm={1}
+            xs={2}
             className="d-block d-sm-block d-md-none d-xl-none d-lg-none"
           >
             <NavbarMobile />
@@ -44,7 +44,7 @@ export default function Home({ token }) {
           <Col md={2} className="d-none d-md-block d-lg-block">
             <NavbarDesktop />
           </Col>
-          <Col md={6} sm={8} xs={8}>
+          <Col md={6} sm={8} xs={10}>
             <TweetList
               token={token}
               tweetList={tweetList}
