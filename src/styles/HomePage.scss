@@ -26,3 +26,10 @@
 .follow-button {
   min-width: 72px;
 }
+
+.nome-user{
+  text-overflow: ellipsis;
+  word-wrap: normal;
+  overflow: hidden;
+  word-break: unset;
+}

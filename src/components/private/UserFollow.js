@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Image } from "react-bootstrap";
+import { Button, Col, Image, Row } from "react-bootstrap";
 import ApiUtils from "./ApiUtils";
 
 export default function UserFollow({
@@ -45,32 +45,45 @@ export default function UserFollow({
   };
 
   return (
-    <div className="d-flex flex-row justify-content-between mb-4 align-items-center">
-      <div className="d-flex flex-row text-left align-items-center">
-        <Image
-          style={{ width: 30, height: 30 }}
-          className="mr-4"
-          src={avatar}
-          roundedCircle
-        />
-        <div>
-          <p className="mb-0">
-            {username.split("@")[0]}
-            <br />
-            followers: {followersCount}
-          </p>
-        </div>
-      </div>
-      <div>
-        <Button
-          className="follow-button"
-          size="sm"
-          variant="outline-info"
-          onClick={triggerFollow}
+    <Row className="d-flex flex-row justify-content-between mb-4 align-items-center">
+      <Col>
+        <Row
+          xs={12}
+          sm={12}
+          md={10}
+          className="d-flex flex-row text-left align-items-center"
         >
-          {alreadyFollowed ? "unfollow" : "Follow"}
-        </Button>
-      </div>
-    </div>
+          <Col xs={2} md={3}>
+            <Image
+              style={{ width: 30, height: 30 }}
+              className="mr-4"
+              src={avatar}
+              roundedCircle
+            />
+          </Col>
+
+          <Col xs={10} md={9}>
+            <p  className="nome-user mb-0">
+              {username.split("@")[0]}
+            </p>
+            <p>followers: {followersCount}</p>
+          </Col>
+        </Row>
+      </Col>
+      <Col>
+        <Row md={12}>
+          <Col xs={12} md={12} sm={12}>
+            <Button
+              className="follow-button"
+              size="sm"
+              variant="outline-info"
+              onClick={triggerFollow}
+            >
+              {alreadyFollowed ? "unfollow" : "Follow"}
+            </Button>
+          </Col>
+        </Row>
+      </Col>
+    </Row>
   );
 }
