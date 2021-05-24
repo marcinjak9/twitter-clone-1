@@ -9,7 +9,7 @@ import TrendList from "./TrendList";
 import ApiUtils from "./ApiUtils";
 import { useParams } from "react-router-dom";
 
-export default function Home({ token }) {
+export default function Home() {
   const [tweetList, setTweetList] = useState([]);
   const { q } = useParams();
   console.log(q);
@@ -45,11 +45,7 @@ export default function Home({ token }) {
             <NavbarDesktop />
           </Col>
           <Col md={6} sm={8} xs={10}>
-            <TweetList
-              token={token}
-              tweetList={tweetList}
-              fetchTweets={fetchTweets}
-            />
+            <TweetList tweetList={tweetList} fetchTweets={fetchTweets} />
           </Col>
           <Col md={4} className="d-none d-md-block d-lg-block">
             <div className="mb-4">

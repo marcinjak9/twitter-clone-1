@@ -7,7 +7,7 @@ import UserList from "./UserList";
 import { useParams } from "react-router-dom";
 import ProfileList from "./ProfileList";
 
-const Profile = ({ token }) => {
+const Profile = () => {
   const { id } = useParams();
   return (
     <div>
@@ -25,7 +25,7 @@ const Profile = ({ token }) => {
             <NavbarDesktop />
           </Col>
           <Col md={7} sm={8} xs={8}>
-            <ProfileList id={id} token={token} />
+            <ProfileList id={id} />
           </Col>
           <Col md={3} className="d-none d-md-block d-lg-block">
             tendenze

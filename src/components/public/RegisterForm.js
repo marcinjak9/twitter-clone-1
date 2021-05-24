@@ -18,19 +18,18 @@ export default function RegisterForm(props) {
       .then((res) => res.json())
       .then((json) => {
         if (json.user.id) {
-          props.onHide()
+          props.onHide();
         } else {
           alert("non sei registrato");
         }
       });
-
   };
   return (
     <div>
       <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Using Grid in Modal
+            Register here
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="show-grid">

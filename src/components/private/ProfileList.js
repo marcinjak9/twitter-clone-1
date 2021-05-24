@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import ApiUtils from "./ApiUtils";
 import TweetCard from "./TweetCard";
 import { Card, Button, Image } from "react-bootstrap";
+import { useAuth } from "../../hooks/UseAuth";
 
-const Profilelist = ({ id, token }) => {
+const Profilelist = ({ id }) => {
   const [tweets, setTweets] = useState([]);
   const [username, setUsername] = useState("");
   const [followersCount, setFollowersCount] = useState(0);
   const userId = localStorage.getItem("userId");
   const avatar = "https://i.pravatar.cc/30?img=" + Math.random();
   const [alreadyFollowed, setAlreadyFollowed] = useState(false);
+  const { token } = useAuth();
+
   useEffect(() => {
     listTweets();
     getProfile();

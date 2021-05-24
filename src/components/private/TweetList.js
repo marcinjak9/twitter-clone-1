@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import TweetCard from "./TweetCard";
 import ApiUtils from "./ApiUtils";
 import TweetForm from "./TweetForm";
+import { useAuth } from "../../hooks/UseAuth";
 
-export default function TweetList({ token, tweetList, fetchTweets}) {
+export default function TweetList({ tweetList, fetchTweets }) {
   const [tweets, setTweets] = useState([]);
+
+  const { token } = useAuth();
 
   useEffect(() => {
     setOrderedTweets(tweetList);
@@ -25,7 +28,7 @@ export default function TweetList({ token, tweetList, fetchTweets}) {
 
   return (
     <div>
-      <TweetForm listUpdate={listUpdate} fetchTweets={fetchTweets}/>
+      <TweetForm listUpdate={listUpdate} fetchTweets={fetchTweets} />
 
       {tweets.map((tweetsitem) => (
         <TweetCard tweetsitem={tweetsitem} key={tweetsitem.id} />
