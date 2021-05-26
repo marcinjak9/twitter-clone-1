@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { ListGroup, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import _ from "lodash";
 
 const TrendList = ({ tweetList }) => {
   const [tags, setTags] = useState([]);
   useEffect(() => {
     processTags(tweetList);
-    console.log(tags);
   }, [tweetList]);
 
   const processTags = (json) => {
@@ -26,6 +26,7 @@ const TrendList = ({ tweetList }) => {
     });
     setTags(newArray);
   };
+
   return (
     <Card>
       <Card.Body>
@@ -33,7 +34,7 @@ const TrendList = ({ tweetList }) => {
         <ListGroup>
           {tags.map((tagItem) => (
             <ListGroup.Item key={tagItem.id}>
-              {tagItem.name} {tagItem.count}
+              <Link to={`/search/${tagItem.name.split("#")[1]}`}>{tagItem.name} {tagItem.count}</Link>
             </ListGroup.Item>
           ))}
         </ListGroup>

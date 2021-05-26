@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Col, Image, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import ApiUtils from "./ApiUtils";
 
 export default function UserFollow({
@@ -63,9 +64,11 @@ export default function UserFollow({
           </Col>
 
           <Col xs={10} md={9}>
-            <p  className="nome-user mb-0">
+            <Link to={`/profile/${id}`}>
+            <p className="nome-user mb-0">
               {username.split("@")[0]}
             </p>
+            </Link>
             <p>followers: {followersCount}</p>
           </Col>
         </Row>
