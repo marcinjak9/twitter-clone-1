@@ -9,7 +9,7 @@ import { AuthProvider } from "./hooks/UseAuth";
 export default function RouterConfig() {
   return (
     <AuthProvider>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route path="/home">
             <Home />
